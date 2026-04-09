@@ -1,17 +1,17 @@
 {
   "packname": "My Sticker Pack",
   "author": "My Bot",
-  "botName": "Nayan Bot",
-  "botOwner": "Mohammad Nayan",
+  "botName": "𝐑𝐀𝐇𝐈 𝐏𝐎𝐖𝐄𝐑 𝐁𝐎𝐓",
+  "botOwner": "𝐌𝐨𝐡𝐚𝐦𝐦𝐚𝐝 𝐑𝐚𝐡𝐢",
   "autoUpdate": true,
   "runMsg": false,
-  "ownerNumber": "8801615298449",
+  "ownerNumber": "8801751741382",
   "botNumber": "bot number",
   "botUid": "bot uid",
   "PREFIX": "/",
   "timeZone": "Asia/Dhaka",
   "admin": [
-    "your number",
+    "8801751741382",
     "your id"
   ],
   "helpPic": "https://i.postimg.cc/pV7xByGv/IMG-20250106-WA0007.png",
