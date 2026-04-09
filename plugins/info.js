@@ -24,34 +24,28 @@ module.exports = {
 
       const infoMessage = `
 --------------------------------------------
-𝐍𝐚𝐦𝐞           : 𝐌𝐨𝐡𝐚𝐦𝐦𝐚𝐝 𝐍𝐚𝐲𝐚𝐧
-𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤       : 𝐌𝐨𝐡𝐚𝐦𝐦𝐚𝐝 𝐍𝐚𝐲𝐚𝐧
-𝐑𝐞𝐥𝐢𝐠𝐢𝐨𝐧       : 𝐈𝐬𝐥𝐚𝐦
-𝐏𝐞𝐫𝐦𝐚𝐧𝐞𝐧𝐭 𝐀𝐝𝐝𝐫𝐞𝐬𝐬: 𝐓𝐚𝐧𝐠𝐚𝐢𝐥, 𝐃𝐡𝐚𝐤𝐚
-𝐂𝐮𝐫𝐫𝐞𝐧𝐭 𝐀𝐝𝐝𝐫𝐞𝐬𝐬 : 𝐌𝐨𝐲𝐦𝐨𝐧𝐬𝐢𝐧𝐡, 𝐃𝐡𝐚𝐤𝐚 𝐁𝐲𝐩𝐚𝐬𝐬
-𝐆𝐞𝐧𝐝𝐞𝐫       : 𝐌𝐚𝐥𝐞
-𝐀𝐠𝐞           : 𝟏𝟖+
-𝐑𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩 : 𝐒𝐢𝐧𝐠𝐥𝐞
-𝐖𝐨𝐫𝐤         : 𝐒𝐭𝐮𝐝𝐞𝐧𝐭
-𝐆𝐦𝐚𝐢𝐥       : mohammadnayan447@gmail.com
-𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩   : wa.me/+8801615298449
-𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦     : t.me/MOHAMMADNAYAN
-𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐋𝐢𝐧𝐤: https://www.facebook.com/www.xnxx.com169
-
+➥ 𝐇𝐞𝐲 𝐌𝐫/𝐦𝐢𝐬𝐬 
+╭────《  𝐌𝐘 𝐒𝐄𝐋𝐅 》────⊷
+│ ╭────────✧❁✧────────◆
+│ │ 🌸 𝐍𝐀𝐌𝐄 :- 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐑𝐀𝐇𝐈
+│ │ 🏡 𝐅𝐑𝐎𝐌 :- 𝐒𝐘𝐋𝐇𝐄𝐓 𝐆𝐎𝐋𝐀𝐏𝐆𝐎𝐍𝐉 
+│ │ 📘 𝐂𝐋𝐀SS𝐒 :- 𝐇𝐈𝐃𝐄
+│ │ 💖 𝐑𝐋𝐒 :- 𝐒𝐈𝐍𝐆𝐋𝐄 𝐔𝐋𝐓𝐀 𝐏𝐑𝐎 𝐌𝐀𝐗
+│ │ 🎯 𝐇𝐎𝐁𝐁𝐘 :- 𝐑𝐈𝐃𝐄 & 𝐂𝐎𝐃𝐈𝐍𝐆
+│ │ ☎️ 𝐍𝐔𝐌𝐁𝐄𝐑 :- +8801751741382
+│ │ ..𝐘𝐎𝐔 𝐂𝐀𝐍 𝐒𝐄𝐄 𝐌𝐘 𝐒𝐓𝐀𝐓𝐔𝐒..
+│ ╰────────✧❁✧────────◆
+╰══════════════════⊷
+--------------------------------------------
 --------------------------------------------
 \`\`\`
 🖥️ Server Info:
-• Platform       : ${os.platform()}
-• CPU            : ${os.cpus()[0].model}
-• Node.js Version: ${process.version}
-• Uptime         : ${uptime}
-• Total Memory   : ${(os.totalmem() / (1024 ** 3)).toFixed(2)} GB
-• Free Memory    : ${(os.freemem() / (1024 ** 3)).toFixed(2)} GB
+𝐎𝐖𝐍𝐄𝐑 𝐌𝐎𝐇𝐀𝐌𝐌𝐀𝐃 𝐑𝐀𝐇𝐈
 \`\`\``;
 
       await api.sendMessage(
             event.threadId,
-            { image: { url: "https://i.postimg.cc/2y9bTqv6/retouch-2025071913433217.jpg" }, caption: infoMessage || '' },
+            { image: { url: "https://i.postimg.cc/05p6KqCc/1768548671157.jpg" }, caption: infoMessage || '' },
             { quoted: event.message }
           );;
     } catch (error) {
