@@ -18,7 +18,9 @@ module.exports = {
       const welcomeMessage = `🎉✨ *Hey ${username}, Welcome to ${groupName}!* ✨🎉\n\n` +
         `🚀 You just landed in an awesome group!\n` +
         `👥 *Total Members:* ${totalMembers}\n` +
-        `📢 *Rules:* Be respectful, stay active & enjoy!`;
+        `📢 *Rules:* Be respectful, stay active & enjoy
+        
+        > 𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝚁𝙰𝙷𝙸!`;
 
       if (profilePicUrl) {
         await api.sendMessage(event.id, {
