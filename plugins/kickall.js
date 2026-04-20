@@ -3,66 +3,55 @@ const isAdmin = global.isAdmin;
 module.exports = {
   config: {
     name: 'kickall',
-    aliases: ['clean', 'removeall'],
-    permission: 2, 
+    aliases: ['removeall', 'clearall'],
+    permission: 2, // Admin permission
     prefix: true,
     categorie: 'Moderation',
-    credit: 'Developed by Mohammad rahi',
-    description: 'Removes all members from the group except the admin and the bot.',
+    credit: 'Developed by Mohammad Rahi',
+    description: 'Kicks all non-admin members from the group.',
     usages: [`${global.config.PREFIX}kickall`]
   },
 
-  start: async ({ event, api, args }) => {
+  start: async ({ event, api }) => {
     const { threadId, senderId } = event;
-    
+
     try {
-      // ১. এডমিন চেক
+      // Admin and Bot status check
       const { isSenderAdmin, isBotAdmin } = await isAdmin(api, threadId, senderId);
 
       if (!isBotAdmin) {
-        return api.sendMessage(threadId, { text: '❌ আগে আমাকে গ্রুপের এডমিন করুন!' });
+        return api.sendMessage(threadId, { text: 'Bot-ke age group admin banate hobe!' });
       }
 
       if (!isSenderAdmin) {
-        return api.sendMessage(threadId, { text: '❌ এই কমান্ডটি শুধু এডমিনরা ব্যবহার করতে পারবেন।' });
+        return api.sendMessage(threadId, { text: 'Ei command sudhu group admin-ra use korte parben.' });
       }
 
-      // ২. মেম্বার লিস্ট সংগ্রহ
+      // Group details fetch kora
       const groupMetadata = await api.groupMetadata(threadId);
-      const participants = groupMetadata.participants;
-      
-      // বোটের নিজের আইডি (সঠিক ফরম্যাটে)
-      const botNumber = api.user.id.includes(':') ? api.user.id.split(':')[0] + '@s.whatsapp.net' : api.user.id;
+      const botId = api.getCurrentUserID ? api.getCurrentUserID() : api.user.id; 
 
-      // ৩. কিক লিস্ট ফিল্টার (বোট এবং কমান্ডদাতাকে বাদ দিয়ে)
-      const toKick = participants
-        .filter(p => p.id !== botNumber && p.id !== senderId)
+      // Participant filter kora (Jara admin na ebong bot nije na)
+      const participants = groupMetadata.participants;
+      const victimList = participants
+        .filter(p => !p.admin && p.id !== botId && p.id !== undefined)
         .map(p => p.id);
 
-      if (toKick.length === 0) {
-        return api.sendMessage(threadId, { text: '❌ কিক করার মতো কেউ নেই!' });
+      if (victimList.length === 0) {
+        return api.sendMessage(threadId, { text: 'Group-e kick korar moto kono normal member pawa jayni.' });
       }
 
-      await api.sendMessage(threadId, { text: `🧹 ক্লিনিং শুরু হচ্ছে... মোট ${toKick.length} জনকে রিমুভ করা হবে।` });
+      await api.sendMessage(threadId, { text: `Mot ${victimList.length} jon-ke kick kora shuru hocche. Ete kichu somoy lagte pare...` });
 
-      // ৪. লুপ চালিয়ে কিক করা
-      for (let i = 0; i < toKick.length; i++) {
-        try {
-          // নির্দিষ্ট ইউজারের আইডি দিয়ে রিমুভ রিকোয়েস্ট
-          await api.groupParticipantsUpdate(threadId, [toKick[i]], 'remove');
-          
-          // প্রতি কিকের মাঝে ২ সেকেন্ড বিরতি (ব্যান প্রোটেকশন)
-          await new Promise(resolve => setTimeout(resolve, 2000));
-        } catch (e) {
-          console.error(`Failed to kick ${toKick[i]}:`, e);
-        }
-      }
-      
-      return api.sendMessage(threadId, { text: '✅ সফলভাবে গ্রুপ পরিষ্কার করা হয়েছে।' });
+      // Kick loop ba bulk remove
+      // Note: Ekebare beshi member kick korle WhatsApp account ban hote pare, tai safely kora bhalo
+      await api.groupParticipantsUpdate(threadId, victimList, 'remove');
 
-    } catch (err) {
-      console.error("Kickall Error:", err);
-      return api.sendMessage(threadId, { text: '❌ একটি টেকনিক্যাল এরর হয়েছে। বোটকে পুনরায় এডমিন দিয়ে চেষ্টা করুন।' });
+      await api.sendMessage(threadId, { text: 'Successfully shobai-ke remove kora hoyeche.' });
+
+    } catch (error) {
+      console.error('Kickall Error:', error);
+      await api.sendMessage(threadId, { text: 'Command-ti execute korte somossa hoyeche. Metadata fetch korte somossa hote pare.' });
     }
-  }
+  },
 };
