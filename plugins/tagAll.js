@@ -1,40 +1,63 @@
 module.exports = {
     config: {
         name: 'tagall',
-        aliases: ['all', 'mentionall'],
-        permission: 3,
+        aliases: ['all', 'mentionall', 'everyone'],
+        permission: 2, // Admin only recommend
         prefix: true,
-        description: 'Mentions all members of a group with stylish greetings.',
-        categories: 'group',
-        usages: [`${global.config.PREFIX}tagall [optional message]`],
-        credit: 'Developed by Mohammad Nayan'
+        description: 'সবাইকে স্টাইলিশ ভাবে মেনশন দিন।',
+        category: 'group',
+        usages: ['tagall [message]'],
+        credit: 'Developed by Rahi Papa'
     },
 
     start: async ({ event, api, args }) => {
-        const { threadId, senderI, message } = event;
+        const { threadId } = event;
 
-        const groupMetadata = await api.groupMetadata(threadId);
-        const participants = groupMetadata.participants || [];
+        try {
+            const groupMetadata = await api.groupMetadata(threadId);
+            const participants = groupMetadata.participants || [];
+            
+            if (participants.length === 0) return;
 
-        if (participants.length === 0) {
-            return await api.sendMessage(threadId, { text: '⚠️ No participants found in this group.' });
+            // ─── RANDOM STYLISH GREETINGS ───
+            const greetings = [
+                "🔥 Attention Legends! Wake up!",
+                "🌟 Hello Stars! Look at this message!",
+                "🛡️ Mainframe Alert! Everyone stay active!",
+                "🚀 Rocket speed mention! Check this out!",
+                "💎 Diamond vibes! Shine together fam!"
+            ];
+
+            let userMsg = args.join(' ') || greetings[Math.floor(Math.random() * greetings.length)];
+
+            let mentionText = `╭━━━〔 📢 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗔𝗟𝗟 〕━━━╮\n┃\n`;
+            mentionText += `┃ 📝 𝗠𝗲𝘀𝘀𝗮𝗴𝗲: ${userMsg}\n`;
+            mentionText += `┃ 📊 𝗧𝗼𝘁𝗮𝗹: ${participants.length} Members\n`;
+            mentionText += `┃ ⚡ 𝗧𝗮𝗴𝗴𝗲𝗱 𝗕𝘆: @${event.sender.split('@')[0]}\n`;
+            mentionText += `┃\n╰━━━━━━━━━━━━━━━━━━━━━━━╯\n\n`;
+
+            let mentions = [];
+            participants.forEach((member, index) => {
+                mentionText += ` ${index + 1}. ❯ @${member.id.split('@')[0]}\n`;
+                mentions.push({
+                    id: member.id,
+                    tag: `@${member.id.split('@')[0]}`
+                });
+            });
+
+            mentionText += `\n✨ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆: 𝗥𝗮𝗵𝗶 𝗣𝗮𝗽𝗮`;
+
+            await api.sendMessage(threadId, {
+                text: mentionText,
+                mentions: mentions.map(m => m.id)
+            });
+
+        } catch (error) {
+            console.error(error);
+            await api.sendMessage(threadId, { text: "❌ Group metadata fetch failed!" });
         }
-
-        
-        const greetings = [
-            "👋 Hey everyone! Ready for some fun today?",
-            "🌟 Hello beautiful people! Stay awesome!",
-            "😎 Yo team! Let’s make today amazing!",
-            "🎉 Hi friends! Time for some group chaos 😜",
-            "💖 Greetings everyone! Spread love and laughter!",
-            "🔥 What’s up fam? Let’s rock this group!",
-            "🥳 Hello all! Party vibes ON!",
-            "😇 Hey legends! Keep smiling today!",
-            "⚡ Attention everyone! Fun mode activated!",
-            "🌈 Hello stars! Shine bright today!"
-        ];
-
-        let customMsg = args.join(' ');
+    }
+};        let customMsg = args.join(' ');
         if (!customMsg) {
             
             customMsg = greetings[Math.floor(Math.random() * greetings.length)];
