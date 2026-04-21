@@ -1,30 +1,40 @@
 {
-  "packname": "My Sticker Pack",
-  "author": "My Bot",
-  "botName": "𝐑𝐀𝐇𝐈 𝐏𝐎𝐖𝐄𝐑 𝐁𝐎𝐓",
+  "packname": "𝐑𝐀𝐇𝐈 𝐏𝐎𝐖𝐄𝐑 ⚡️",
+  "author": "𝐌𝐨𝐡𝐚𝐦𝐦𝐚𝐝 𝐑𝐚𝐡𝐢",
+  "botName": "𝐑𝐀𝐇𝐈 𝐏𝐎𝐖𝐄𝐑 𝐁𝐎𝐓 𝐕𝟐",
   "botOwner": "𝐌𝐨𝐡𝐚𝐦𝐦𝐚𝐝 𝐑𝐚𝐡𝐢",
-  "autoUpdate": true,
-  "runMsg": false,
-  "ownerNumber": "8801751741382",
-  "botNumber": "bot number",
-  "botUid": "bot uid",
-  "PREFIX": "/",
+  "ownerNumber": "8801351634937",
+  "botNumber": "8801351634937",
+  "botUid": "249366505902131",
+  "PREFIX": ".",
   "timeZone": "Asia/Dhaka",
+  "PORT": 3000,
   "admin": [
-    "8801751741382",
-    "your id"
+    "8801351634937",
+    "249366505902131"
   ],
   "helpPic": "https://i.postimg.cc/mDxLT8tg/20260409-210605.jpg",
   "welPic": "https://i.postimg.cc/52nVjkvP/20260409-192052.png",
-  "PORT": "3000",
+  "menuPic": "https://i.postimg.cc/mDxLT8tg/20260409-210605.jpg",
+  "autoUpdate": true,
+  "runMsg": true,
+  "commandMode": "public",
+  "autoRead": true,
+  "autoStatusView": true,
+  "antiCall": true,
+  "antiDelete": true,
+  "antiSpam": true,
+  "alwaysOnline": true,
   "delay": 100,
-  "msg": {
-    "modAdmin": false,
-    "ban": false
-  },
   "imgurKey": "1e87dfc28df0bac",
   "giphyApiKey": "qnl7ssQChTdPjsKta2Ax2LMaGXz303tq",
-  "commandMode": "public",
-  "description": "This is a bot for managing group commands and automating tasks.",
-  "version": "1.0.4"
+  "msg": {
+    "modAdmin": "🛡️ *Admin Power Required!*",
+    "ban": "🚫 *ACCESS REVOKED!* Mohammad Rahi apnake ban koreche.",
+    "ownerOnly": "👑 *OWNER ONLY:* Eiti shudhu Rahi Bhai er jonno reserved.",
+    "wait": "⚡ *Rahi Power Processing...*",
+    "error": "⚠️ *System Glitch!* Error hoyeche."
+  },
+  "description": "Premium multi-device bot for group management and automation.",
+  "version": "2.0.1"
 }
